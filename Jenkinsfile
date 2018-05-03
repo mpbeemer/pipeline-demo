@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-         string(name: 'tomcat_dev', defaultValue: 'localhost', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: 'localhost', description: 'Production Server')
-    }
-
     triggers {
          pollSCM('* * * * *')
      }
@@ -40,9 +35,9 @@ stages{
             }
             post {
                 success {
-                    sh "cp -f **/target/*.war development:/usr/local/tomcat/webapps"
+                    sh "cp -f **/target/*.war /usr/local/tomcat-development/webapps"
                     input 'Promote to production?'
-                    sh "cp -f **/target/*.war production:/usr/local/tomcat/webapps"
+                    sh "cp -f **/target/*.war /usr/local/tomcat-production/webapps"
                 }
                 failure {
                     echo 'Unable to deploy - packaging failed.'
