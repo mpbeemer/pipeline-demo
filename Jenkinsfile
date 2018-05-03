@@ -35,9 +35,9 @@ stages{
             }
             post {
                 success {
-                    sh "cp -f **/target/*.war /usr/local/tomcat-development/webapps"
+                    sh "cp -f **/target/*.war /usr/share/tomcat-development"
                     input 'Promote to production?'
-                    sh "cp -f **/target/*.war /usr/local/tomcat-production/webapps"
+                    sh "cp -f **/target/*.war /usr/share/tomcat-production"
                 }
                 failure {
                     echo 'Unable to deploy - packaging failed.'
