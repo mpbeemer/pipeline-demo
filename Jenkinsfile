@@ -40,12 +40,12 @@ stages{
             }
             post {
                 success {
-                    sh "cp -f **/target/*.war /home/mpbeemer/projects/tomcat-staging/webapps"
+                    sh "cp -f **/target/*.war development:/usr/local/tomcat/webapps"
                     input 'Promote to production?'
-                    sh "cp -f **/target/*.war /home/mpbeemer/projects/tomcat-prod/webapps"
+                    sh "cp -f **/target/*.war production:/usr/local/tomcat/webapps"
                 }
                 failure {
-                    echo 'Unable to deply - packaging failed.'
+                    echo 'Unable to deploy - packaging failed.'
                 }
             }
         }
