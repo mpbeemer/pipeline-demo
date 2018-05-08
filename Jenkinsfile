@@ -35,9 +35,9 @@ stages{
             }
             post {
                 success {
-                    sh "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -f **/target/*.war root@172.18.0.4:/usr/local/tomcat/webapps"
+                    sh "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -f **/target/*.war root@tomcatstaging:/usr/local/tomcat/webapps"
                     input 'Promote to production?'
-                    sh "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -f **/target/*.war root@172.18.0.2:/usr/local/tomcat/webapps"
+                    sh "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -f **/target/*.war root@tomcatprod:/usr/local/tomcat/webapps"
                 }
                 failure {
                     echo 'Unable to deploy - packaging failed.'
