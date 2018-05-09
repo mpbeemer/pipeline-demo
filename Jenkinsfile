@@ -35,9 +35,9 @@ stages{
             }
             post {
                 success {
-                    sh "scp -o "StrictHostKeyChecking=no" **/target/*.war root@tomcatstaging:/usr/local/tomcat/webapps"
+                    sh "scp -o \"StrictHostKeyChecking=no\" **/target/*.war root@tomcatstaging:/usr/local/tomcat/webapps"
                     input 'Promote to production?'
-                    sh "scp -o "StrictHostKeyChecking=no" **/target/*.war root@tomcatprod:/usr/local/tomcat/webapps"
+                    sh "scp -o \"StrictHostKeyChecking=no\" **/target/*.war root@tomcatprod:/usr/local/tomcat/webapps"
                 }
                 failure {
                     echo 'Unable to deploy - packaging failed.'
