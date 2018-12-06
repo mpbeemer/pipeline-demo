@@ -1,6 +1,7 @@
-# maven-project
-Source code for James Lee's Jenkins course.
+# pipeline-demo
+DevOps exercise using polled github project to control build.
 
-Check out our Latest DevOps PDF book.
+This repository contains project source code and Jenkins build control file.
+Once installed as a Jenkins project, build will automatically launch if either is changed (polled every minute).
 
-https://www.level-up.one/devops-pdf-book
+Polling was used instead of webhook as this project was developed on a secured network and external IP for the development machine could not be provided.
